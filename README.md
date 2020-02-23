@@ -1,5 +1,7 @@
 # spotLog
 
+Real-time logging + analytics on your Spotify listening 
+
 - activate venv + install dependencies: `source venv/bin/activate && pip3 install -r requirements.txt`
 - run flask service on port 5000: `python3 song_listener.py`
 - expose port via external tunnel: `./ngrok http 5000`
