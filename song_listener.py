@@ -17,7 +17,7 @@ def listen():
 
     songs = []
     
-    for i in range(int(time_parameters['duration'])):
+    for i in range(int(time_parameters['iterations'])):
         
         songs.append(fetcher.get_current_song())
         time.sleep(int(time_parameters['sleep']))
