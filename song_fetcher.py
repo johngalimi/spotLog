@@ -29,7 +29,7 @@ class SongFetcher:
             entry = {}
 
             entry['play_timestamp'] = data['timestamp']
-            entry['duration_elapsed'] = data['progress_ms'] / data['item']['duration_ms']
+            entry['duration_elapsed'] = round(data['progress_ms'] / data['item']['duration_ms'], 2)
 
             entry['album_id'] = data['item']['album']['id']
             entry['album_name'] = data['item']['album']['name']
@@ -42,7 +42,7 @@ class SongFetcher:
             entry['artist_id'] = primary_artist['id']
             entry['artist_name'] = primary_artist['name']
 
-            entry['features'] = features
+            entry['artist_features'] = features
    
             entry['song_id'] = data['item']['id']
             entry['song_name'] = data['item']['name']
