@@ -20,13 +20,14 @@ class SongFetcher:
 
         status = r.status_code
 
+        entry = {}
+
         if status == 204:
-            print('no track playing')
+            entry['message'] = 'Sorry, nothing is playing'
 
         elif status == 200:
 
             data = r.json()
-            entry = {}
 
             entry['play_timestamp'] = data['timestamp']
             entry['duration_elapsed'] = round(data['progress_ms'] / data['item']['duration_ms'], 2)
@@ -47,15 +48,8 @@ class SongFetcher:
             entry['song_id'] = data['item']['id']
             entry['song_name'] = data['item']['name']
 
-            #pprint.pprint(data)
-            print('**********')
-            print(pprint.pprint(entry))
-
-            return entry
         else:
-            print('error requesting song')
+            entry['message'] = 'Sorry, there was an error in the request'
 
+        return entry
 
-if __name__ == '__main__':
-    song_fetcher = SongFetcher()
-    song_fetcher.get_current_song()
